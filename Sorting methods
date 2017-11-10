@@ -1,0 +1,51 @@
+public static void bubbleSort (ArrayList<Object[]> arr)
+{
+  for(int j = 0; j < arr.size(); j++)
+  {
+    for(int i = j + 1; i < arr.size(); i++)
+    {
+      if(arr.get(i)[1].toString().compareToIgnoreCase(arr.get(j)[1].toString()) < 0)
+      {
+        Object[] words = arr.get(j);
+        arr.set(j, arr.get(i));
+        arr.set(i, words);
+      }
+    }
+  }
+}
+
+public static void SelectionSort (ArrayList<Object[]> arr)
+{
+  int i, j, first;
+  for (i = arr.size() - 1; i > 0; i--)
+  {
+    first = 0;
+    for(j = 1; j <= i; j ++)
+    {
+      if((int)arr.get(j)[0] > (int)arr.get(first)[0])
+        first = j;
+    }
+    Object [] temp = arr.get(first);
+    arr.set(first, arr.get(i));
+    arr.set(i, temp);
+  }
+}
+
+public static void InsertionSort(ArrayList<Object[]> arr)
+{
+  int j;
+  Object[] key;
+  int i;
+  for (j = 1; j < arr.size(); j++)
+  {
+    key = arr.get(j);
+    for(i = j - 1; i >= 0; i--)
+    {
+      if(arr.get(i)[2].toString().compareToIgnoreCase(key[2].toString()) > 0)
+      {
+        arr.set(i + 1, arr.get(i));
+        arr.set(i, key);
+      }
+    }
+  }
+}
