@@ -1,0 +1,10 @@
+static string ComputeFizzBuzz(int numberToCheck)
+{
+  string result = numberToCheck.ToString();
+
+  if (numberToCheck % 3 == 0) result = "Fizz";
+  if (numberToCheck % 5 == 0) result = "Buzz";
+  if (numberToCheck % 3 == 0 && numberToCheck % 5 == 0) result = "FizzBuzz";
+  
+  return result;
+}
