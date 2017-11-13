@@ -1,0 +1,27 @@
+public static List<Customer> SearchCustomers(string search = "")
+{
+  string query;
+  if (string.IsNullOrEmpty(search))
+  {
+    query = "SELECT * FROM tblCustomers";
+  }
+  else
+  {
+    query = "SELECT * FROM tblCustomers WHERE CustomerCompanyName LIKE '{0}' OR CustomerContactName LIKE '{0}' OR CustomerContactNumber LIKE '{0}' OR CustomerAddress LIKE '{0}'";
+    query = string.Format(query, search);
+  }
+  OleDbConnection conn = DatabaseManager.GetOpenedConnection();
+  OleDbCommand dbCmd = new OleDbCommand(query, conn);
+  OleDbDataReader reader = dbCmd.ExecuteReader();
+  
+  List<Customer> records = new List<Customer>();
+  while (reader.Read())
+  {
+    Customer record = ReaderToObject(reader);
+    records.Add(record);
+  }
+  reader.Close();
+  conn.Close();
+
+  return records;
+}
