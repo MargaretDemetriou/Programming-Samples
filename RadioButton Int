@@ -1,0 +1,31 @@
+//This is a method I created in Android Studio to use a group of Radio Buttons to make an int based
+//on which radio button was selected, the purpose to make an int to pass onto another activity
+//Radio Buttons are for choosing how much money a person is willing to spend on something
+public int costInt(){
+  int cost = 0;
+  RadioButton freeRadioButton, lowRadioButton, mediumRadioButton, highRadioButton, anyRadioButton;
+  freeRadioButton = findViewById(R.id.rdoFree);
+  lowRadioButton = findViewById(R.id.rdoLow);
+  mediumRadioButton = findViewById(R.id.rdoMedium);
+  highRadioButton = findViewById(R.id.rdoHigh);
+  anyRadioButton = findViewById(R.id.rdoAnyCost);
+  if(freeRadioButton.isChecked()){
+    cost = 1;
+   }
+   else if(lowRadioButton.isChecked()){
+    cost = 2;
+   }
+   else if(mediumRadioButton.isChecked()){
+    cost = 3;
+   }
+   else if(highRadioButton.isChecked()){
+    cost = 4;
+   }
+   else if(anyRadioButton.isChecked()){
+    cost = 5;
+   }
+   else{
+    Toast.makeText(getApplicationContext(), "Please select a cost", Toast.LENGTH_SHORT).show();
+   }
+   return cost;
+}
